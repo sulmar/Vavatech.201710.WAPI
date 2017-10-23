@@ -14,7 +14,7 @@ namespace Vavatech.WAPI.Service.Controllers
         private readonly IStationsService stationsService;
 
         public StationsController()
-            :this(new MockStationsService())
+            : this(new MockStationsService())
         {
         }
 
@@ -24,33 +24,74 @@ namespace Vavatech.WAPI.Service.Controllers
         }
 
         [HttpGet]
-        public IList<Station> Pobierz()
+        public IHttpActionResult Pobierz()
         {
             var stations = stationsService.Get();
 
-            return stations;
+            return Ok(stations);
         }
 
-        public Station Get(int id)
+        [Route("api/stations/{id:int}")]
+        public IHttpActionResult Get(int id)
         {
             var station = stationsService.Get(id);
 
-            return station;
+            if (station == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(station);
         }
 
-        public void Post(Station station)
+
+        [Route("api/stations/{name}")]
+        public IHttpActionResult Get(string name)
+        {
+            var station = stationsService.Get(name);
+
+            if (station == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(station);
+        }
+
+        public IHttpActionResult Post(Station station)
         {
             stationsService.Add(station);
+
+            // return Created($"http://localhost:64688/api/stations/{station.Id}", station);
+
+            return CreatedAtRoute("DefaultApi", new { id = station.Id }, station);
         }
 
-        public void Put(Station station)
+
+        [Route("api/stations/{id}")]
+        public IHttpActionResult Put(int id, Station station)
         {
+            if (id != station.Id)
+            {
+                return BadRequest();
+            }
+
             stationsService.Update(station);
+
+            return Ok();
         }
 
-        public void Delete(int id)
+        [Route("api/stations/{id}")]
+        public IHttpActionResult Delete(int id)
         {
+            var station = stationsService.Get(id);
+
+            if (station == null)
+                return NotFound();
+
             stationsService.Remove(id);
+
+            return Ok();
         }
     }
 }

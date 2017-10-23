@@ -10,6 +10,8 @@ namespace Vavatech.WAPI.Services
 
         Station Get(int id);
 
+        Station Get(string name);
+
         void Add(Station station);
 
         void Update(Station station);

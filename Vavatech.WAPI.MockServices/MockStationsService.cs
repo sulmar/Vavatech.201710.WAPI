@@ -12,7 +12,7 @@ namespace Vavatech.WAPI.MockServices
     {
         private IList<Station> stations;
 
-        private const string filename = "database.json";
+        private const string filename = @"c:\users\marci\downloads\database.json";
 
         public MockStationsService()
         {
@@ -21,8 +21,15 @@ namespace Vavatech.WAPI.MockServices
 
         private void Load()
         {
-            var json = File.ReadAllText(filename);
-            stations = JsonConvert.DeserializeObject<IList<Station>>(json);
+            if (File.Exists(filename))
+            {
+                var json = File.ReadAllText(filename);
+                stations = JsonConvert.DeserializeObject<IList<Station>>(json);
+            }
+            else
+            {
+                stations = new List<Station>();
+            }
         }
 
         private void Save()
@@ -75,6 +82,6 @@ namespace Vavatech.WAPI.MockServices
             Save();
         }
 
-        
+        public Station Get(string name) => stations.SingleOrDefault(s => s.Name == name);
     }
 }

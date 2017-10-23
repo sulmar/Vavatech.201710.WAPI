@@ -255,6 +255,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Vavatech.WAPI.MockServices\Vavatech.WAPI.MockServices.csproj">
+      <Project>{0A46C458-1EF1-40CC-9FC2-292FF2DF1DE1}</Project>
+      <Name>Vavatech.WAPI.MockServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vavatech.WAPI.Models\Vavatech.WAPI.Models.csproj">
       <Project>{21edbbde-d7a8-427d-a373-bbaa814f0696}</Project>
       <Name>Vavatech.WAPI.Models</Name>

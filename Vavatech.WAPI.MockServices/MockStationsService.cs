@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Vavatech.WAPI.Models;
 using Vavatech.WAPI.Services;
@@ -10,23 +12,35 @@ namespace Vavatech.WAPI.MockServices
     {
         private IList<Station> stations;
 
+        private const string filename = "database.json";
+
         public MockStationsService()
         {
-            stations = new List<Station>
-            {
-                new Station { Id = 1, Name = "ST001" },
-                new Station { Id = 2, Name = "ST002" },
-                new Station { Id = 3, Name = "ST003" },
-            };
+            Load();
         }
 
+        private void Load()
+        {
+            var json = File.ReadAllText(filename);
+            stations = JsonConvert.DeserializeObject<IList<Station>>(json);
+        }
+
+        private void Save()
+        {
+            var json = JsonConvert.SerializeObject(stations);
+            File.WriteAllText(filename, json);
+        }
 
         public void Add(Station station)
         {
             stations.Add(station);
 
             station.Id = stations.Max(s => s.Id) + 1;
+
+            Save();
         }
+
+       
 
         public IList<Station> Get()
         {
@@ -45,6 +59,8 @@ namespace Vavatech.WAPI.MockServices
             if (station!=null)
             {
                 stations.Remove(station);
+
+                Save();
             }
         }
 
@@ -55,6 +71,10 @@ namespace Vavatech.WAPI.MockServices
             stations.Remove(foundStation);
 
             Add(station);
+
+            Save();
         }
+
+        
     }
 }

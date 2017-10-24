@@ -4,7 +4,12 @@ using System.Text;
 
 namespace Vavatech.WAPI.Models
 {
-    public class User : Base
+    public abstract class SearchCriteria : Base
+    {
+
+    }
+
+    public class UserSearchCriteria : SearchCriteria
     {
         public string FirstName { get; set; }
 

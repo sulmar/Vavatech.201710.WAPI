@@ -24,6 +24,8 @@ namespace Vavatech.WAPI.MockServices
         public virtual void Add(TItem item)
         {
             items.Add(item);
+
+            Save();
         }
 
         public virtual IList<TItem> Get()

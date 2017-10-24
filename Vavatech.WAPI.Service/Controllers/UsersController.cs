@@ -9,6 +9,7 @@ using Vavatech.WAPI.Services;
 
 namespace Vavatech.WAPI.Service.Controllers
 {
+    [RoutePrefix("api/users")]
     public class UsersController : ApiController
     {
         private readonly IUsersService usersService;
@@ -50,6 +51,34 @@ namespace Vavatech.WAPI.Service.Controllers
             }
 
             return Ok(user);
+        }
+
+        [Route(@"{pesel:regex(^\d{11}$)}")]
+        [HttpGet]
+        public IHttpActionResult GetByPesel(string pesel)
+        {
+            var user = usersService.GetByPesel(pesel);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
+
+        //public IHttpActionResult Get()
+        //{
+        //    return Ok(usersService.Get());
+        //}
+
+        // api/users?firstname=Marcin&lastname=Sulecki
+        public IHttpActionResult Get([FromUri] UserSearchCriteria criteria)
+        {
+            var users = usersService.Get(criteria);
+
+            return Ok(users);
         }
 
         public IHttpActionResult Post(User user)

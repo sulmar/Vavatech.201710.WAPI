@@ -9,7 +9,7 @@ using Vavatech.WAPI.Services;
 
 namespace Vavatech.WAPI.Service.Controllers
 {
-    [RoutePrefix("api/stations")]
+    // [RoutePrefix("api/stations")]
     public class StationsController : ApiController
     {
         private readonly IStationsService stationsService;
@@ -24,6 +24,19 @@ namespace Vavatech.WAPI.Service.Controllers
             this.stationsService = stationsService;
         }
 
+
+
+        // api/stations?lat={latitude}&lng={longitude}
+
+        [HttpGet]
+        public IHttpActionResult GetByLocation(float lat, float lng)
+        {
+
+            // TODO:
+
+            return Ok();
+        }
+
         [HttpGet]
         public IHttpActionResult Pobierz()
         {
@@ -32,8 +45,12 @@ namespace Vavatech.WAPI.Service.Controllers
             return Ok(stations);
         }
 
-        
-        [Route("{id:int}")]
+
+
+
+
+
+        [Route("api/stations/{id:int}")]
         public IHttpActionResult Get(int id)
         {
             var station = stationsService.Get(id);
@@ -47,7 +64,7 @@ namespace Vavatech.WAPI.Service.Controllers
         }
 
 
-        [Route("{name}")]
+        [Route("api/stations/{name}")]
         public IHttpActionResult Get(string name)
         {
             var station = stationsService.Get(name);

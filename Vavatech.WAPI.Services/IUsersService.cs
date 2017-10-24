@@ -21,6 +21,10 @@ namespace Vavatech.WAPI.Services
     public interface IUsersService : IBaseService<User>
     {
         User Get(string firstname);
+
+        User GetByPesel(string pesel);
+
+        IList<User> Get(UserSearchCriteria criteria);
     }
 
     public interface IVehiclesService : IBaseService<Vehicle>

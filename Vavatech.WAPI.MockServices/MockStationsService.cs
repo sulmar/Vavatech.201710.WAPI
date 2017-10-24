@@ -8,6 +8,7 @@ using Vavatech.WAPI.Services;
 
 namespace Vavatech.WAPI.MockServices
 {
+
     public class MockStationsService : IStationsService
     {
         private IList<Station> stations;

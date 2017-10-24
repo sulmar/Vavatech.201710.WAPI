@@ -4,18 +4,8 @@ using Vavatech.WAPI.Models;
 
 namespace Vavatech.WAPI.Services
 {
-    public interface IStationsService
+    public interface IStationsService : IBaseService<Station>
     {
-        IList<Station> Get();
-
-        Station Get(int id);
-
         Station Get(string name);
-
-        void Add(Station station);
-
-        void Update(Station station);
-
-        void Remove(int id);
     }
 }

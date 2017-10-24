@@ -9,6 +9,7 @@ using Vavatech.WAPI.Services;
 
 namespace Vavatech.WAPI.Service.Controllers
 {
+    [RoutePrefix("api/stations")]
     public class StationsController : ApiController
     {
         private readonly IStationsService stationsService;
@@ -31,7 +32,8 @@ namespace Vavatech.WAPI.Service.Controllers
             return Ok(stations);
         }
 
-        [Route("api/stations/{id:int}")]
+        
+        [Route("{id:int}")]
         public IHttpActionResult Get(int id)
         {
             var station = stationsService.Get(id);
@@ -45,7 +47,7 @@ namespace Vavatech.WAPI.Service.Controllers
         }
 
 
-        [Route("api/stations/{name}")]
+        [Route("{name}")]
         public IHttpActionResult Get(string name)
         {
             var station = stationsService.Get(name);
@@ -68,7 +70,7 @@ namespace Vavatech.WAPI.Service.Controllers
         }
 
 
-        [Route("api/stations/{id}")]
+        [Route("{id}")]
         public IHttpActionResult Put(int id, Station station)
         {
             if (id != station.Id)
@@ -81,7 +83,7 @@ namespace Vavatech.WAPI.Service.Controllers
             return Ok();
         }
 
-        [Route("api/stations/{id}")]
+        [Route("{id}")]
         public IHttpActionResult Delete(int id)
         {
             var station = stationsService.Get(id);

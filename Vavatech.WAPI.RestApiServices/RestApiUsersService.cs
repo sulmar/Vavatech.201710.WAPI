@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -10,6 +11,27 @@ using Vavatech.WAPI.Services;
 
 namespace Vavatech.WAPI.RestApiServices
 {
+   
+
+    public class GenericHttpClient
+    {
+        public static T Get<T>(string uri)
+        {
+            var address = ConfigurationManager.AppSettings["ServiceUri"];
+
+            var client = new HttpClient();
+
+            client.BaseAddress = new Uri(address);
+
+            var response = client.GetAsync(uri).Result;
+
+            var result = response.Content.ReadAsAsync<T>().Result;
+
+            return result;
+        }
+    }
+
+
     public class RestApiUsersService : IUsersService
     {
         private readonly string address;
@@ -21,7 +43,16 @@ namespace Vavatech.WAPI.RestApiServices
 
         public void Add(User item)
         {
-            throw new NotImplementedException();
+            var address = ConfigurationManager.AppSettings["ServiceUri"];
+
+            string url = $"api/users";
+
+            var client = new HttpClient();
+
+            client.BaseAddress = new Uri(address);
+
+            client.PostAsJsonAsync(url, item);
+
         }
 
         public User Get(string firstname)
@@ -38,20 +69,19 @@ namespace Vavatech.WAPI.RestApiServices
         {
             string url = $"api/users";
 
-            var client = new HttpClient();
-            client.BaseAddress = new Uri(address);
+            var users = GenericHttpClient.Get<IList<User>>(url);
 
-            var response = client.GetAsync(url).Result;
-
-            var content = response.Content.ReadAsStringAsync().Result;
-
-            throw new NotImplementedException();
+            return users;
 
         }
 
         public User Get(int id)
         {
-            throw new NotImplementedException();
+            string url = $"api/users/{id}";
+
+            var user = GenericHttpClient.Get<User>(url);
+
+            return user;
         }
 
         public User GetByPesel(string pesel)
@@ -61,7 +91,7 @@ namespace Vavatech.WAPI.RestApiServices
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+          
         }
 
         public void Update(User item)

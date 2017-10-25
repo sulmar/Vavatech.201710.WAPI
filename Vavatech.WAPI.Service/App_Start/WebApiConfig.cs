@@ -45,6 +45,7 @@ namespace Vavatech.WAPI.Service
             IUnityContainer container = new UnityContainer();
             container.RegisterType<IUsersService, MockUsersService>();
             container.RegisterType<IStationsService, MockStationsService>();
+            container.RegisterType<IVehiclesService, MockVehiclesService>();
 
             config.DependencyResolver = new UnityResolver(container);
 

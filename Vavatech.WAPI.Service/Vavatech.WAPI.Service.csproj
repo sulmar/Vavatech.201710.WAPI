@@ -211,6 +211,7 @@
     <Compile Include="Controllers\StationsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VehiclesController.cs" />
     <Compile Include="Extensions\HttpRequestMessageExtensions.cs" />
     <Compile Include="Formatters\QrCodeFormatter.cs" />
     <Compile Include="Global.asax.cs">

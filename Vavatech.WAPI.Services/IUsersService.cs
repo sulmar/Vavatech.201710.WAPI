@@ -27,8 +27,5 @@ namespace Vavatech.WAPI.Services
         IList<User> Get(UserSearchCriteria criteria);
     }
 
-    public interface IVehiclesService : IBaseService<Vehicle>
-    {
-
-    }
+   
 }

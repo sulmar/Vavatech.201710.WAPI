@@ -8,7 +8,9 @@ using System.Web;
 
 namespace Vavatech.WAPI.Service.Handlers
 {
-    //http://localhost:64688/api/users/12.png
+    // Należy dopisać w Web.config
+    // <modules runAllManagedModulesForAllRequests="true">
+
     public class ExtensionMessageHandler : DelegatingHandler
     {
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)

@@ -6,6 +6,7 @@ using System.Web.Http;
 using Vavatech.WAPI.MockServices;
 using Vavatech.WAPI.Models;
 using Vavatech.WAPI.Service.ActionFilters;
+using Vavatech.WAPI.Service.ActionResults;
 using Vavatech.WAPI.Services;
 
 namespace Vavatech.WAPI.Service.Controllers
@@ -49,7 +50,7 @@ namespace Vavatech.WAPI.Service.Controllers
 
             if (user == null)
             {
-                return NotFound();
+                return this.MyResult();
             }
 
             return Ok(user);

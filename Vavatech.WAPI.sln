@@ -5,11 +5,15 @@ VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.WAPI.Service", "Vavatech.WAPI.Service\Vavatech.WAPI.Service.csproj", "{46DAD39D-4D08-4456-AAC7-39779D5A5C8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.WAPI.Models", "Vavatech.WAPI.Models\Vavatech.WAPI.Models.csproj", "{21EDBBDE-D7A8-427D-A373-BBAA814F0696}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.WAPI.Models", "Vavatech.WAPI.Models\Vavatech.WAPI.Models.csproj", "{21EDBBDE-D7A8-427D-A373-BBAA814F0696}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.WAPI.Services", "Vavatech.WAPI.Services\Vavatech.WAPI.Services.csproj", "{DB485B70-5CB5-4D76-BA35-EEBF2A067C57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.WAPI.Services", "Vavatech.WAPI.Services\Vavatech.WAPI.Services.csproj", "{DB485B70-5CB5-4D76-BA35-EEBF2A067C57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.WAPI.MockServices", "Vavatech.WAPI.MockServices\Vavatech.WAPI.MockServices.csproj", "{0A46C458-1EF1-40CC-9FC2-292FF2DF1DE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.WAPI.MockServices", "Vavatech.WAPI.MockServices\Vavatech.WAPI.MockServices.csproj", "{0A46C458-1EF1-40CC-9FC2-292FF2DF1DE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.WAPI.ConsoleClient", "Vavatech.WAPI.ConsoleClient\Vavatech.WAPI.ConsoleClient.csproj", "{090937F3-B090-4824-8166-157F74893076}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.WAPI.RestApiServices", "Vavatech.WAPI.RestApiServices\Vavatech.WAPI.RestApiServices.csproj", "{009BD0AA-523C-4C95-A8A1-10AB527F82A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{0A46C458-1EF1-40CC-9FC2-292FF2DF1DE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A46C458-1EF1-40CC-9FC2-292FF2DF1DE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A46C458-1EF1-40CC-9FC2-292FF2DF1DE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{090937F3-B090-4824-8166-157F74893076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{090937F3-B090-4824-8166-157F74893076}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{090937F3-B090-4824-8166-157F74893076}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{090937F3-B090-4824-8166-157F74893076}.Release|Any CPU.Build.0 = Release|Any CPU
+		{009BD0AA-523C-4C95-A8A1-10AB527F82A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{009BD0AA-523C-4C95-A8A1-10AB527F82A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{009BD0AA-523C-4C95-A8A1-10AB527F82A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{009BD0AA-523C-4C95-A8A1-10AB527F82A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using Vavatech.WAPI.MockServices;
 using Vavatech.WAPI.Models;
+using Vavatech.WAPI.Service.ActionFilters;
 using Vavatech.WAPI.Services;
 
 namespace Vavatech.WAPI.Service.Controllers
@@ -14,12 +15,12 @@ namespace Vavatech.WAPI.Service.Controllers
     {
         private readonly IUsersService usersService;
 
-        public UsersController()
-            : this(new MockUsersService())
-        {
+        //public UsersController()
+        //    : this(new MockUsersService())
+        //{
 
 
-        }
+        //}
 
         public UsersController(IUsersService usersService)
         {
@@ -27,6 +28,7 @@ namespace Vavatech.WAPI.Service.Controllers
         }
 
         [Route("{id:int}")]
+        [ExecutionTimeActionFilter]
         public IHttpActionResult Get(int id)
         {
             var user = usersService.Get(id);
@@ -113,6 +115,17 @@ namespace Vavatech.WAPI.Service.Controllers
                 return NotFound();
 
             usersService.Remove(id);
+
+            return Ok();
+        }
+
+        [Route("{id}")]
+        public IHttpActionResult Head(int id)
+        {
+            var user = usersService.Get(id);
+
+            if (user == null)
+                return NotFound();
 
             return Ok();
         }
